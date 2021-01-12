@@ -11,22 +11,6 @@ class App extends Component {
     };
   }
 
-  // const [celebrities, setCelebs] = useState([]);
-
-  // const API_KEY = process.env.REACT_APP_RAPIDAPI_KEY;
-
-  // const celebrityPeople = async () => {
-  //   const response = await fetch(url, {
-  //     method: "GET",
-  //     headers: {
-  //       "x-rapidapi-key": API_KEY,
-  //       "x-rapidapi-host": "celebrity-bucks.p.rapidapi.com",
-  //     },
-  //   });
-  //   const celebrities = await response.json();
-  //   setCelebs(celebrities.Birthdays);
-  // };
-
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
@@ -36,13 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <CardList name="Paul">
-          {
-            this.state.characters.map(character => (
-              <h1 key={character.id}> {character.name} </h1>)
-            )
-          }
-        </CardList>
+        <CardList characters={this.state.characters} />
       </div>
     );
   }
