@@ -19,6 +19,10 @@ class App extends Component {
   }
   
   render() {
+    const { characters, searchField } = this.state;
+    const filteredCharacters = characters.filter(characters =>
+      characters.name.toLowerCase().includes(searchField.toLowerCase())
+      )
     return (
       <div className="App">
         <input 
@@ -26,7 +30,7 @@ class App extends Component {
           placeholder='search people' 
           onChange={e => this.setState({ searchField: e.target.value })} 
         />
-        <CardList characters={this.state.characters} />
+        <CardList characters={filteredCharacters} />
       </div>
     );
   }
